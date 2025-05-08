@@ -8,6 +8,7 @@ install.packages("dplyr")
 install.packages("tidyverse")
 library(tidyverse)
 library(dplyr)
+library(lattice)
 
 ### Loading and Preprocessing the Data ####
 
@@ -62,6 +63,5 @@ avg_by_daytype <- activity_imputed %>%
   group_by(interval, day_type) %>%
   summarize(mean_steps = mean(steps))
 
-library(lattice)
 xyplot(mean_steps ~ interval | day_type, data = avg_by_daytype, type = "l", layout = c(1, 2),
        xlab = "Interval", ylab = "Number of steps", main = "Steps by Day Type")
